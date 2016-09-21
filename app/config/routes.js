@@ -1,19 +1,19 @@
 import React from 'react';
-import ReactRouter from 'react-router';
-var Router = ReactRouter.Router;
-var Route = ReactRouter.Route;
-var IndexRoute = ReactRouter.IndexRoute;
-var hashHistory = ReactRouter.hashHistory;
+import {Router, Route, hashHistory} from 'react-router';
+import Header from '../components/Header';
 
-import Home from '../components/Home';
-import Calibration from '../components/Calibration';
-import Experiment from '../components/Experiment';
+const app_data = {
+	app_name: 'VGaze',
+	app_url: 'https://github.com/heliumsoule/VGaze',
+	lab_name: 'MIT CSAIL Vision Group',
+	lab_url: 'http://cvcl.mit.edu/Aude.htm',
+	contact: 'jinglin@mit.edu'
+}
 
-var routes = (
+const routes = (
 	<Router history={hashHistory}>
-		<Route path='/' component={Home}>
-			<IndexRoute component={Calibration} />
-		</Route>
+		<Route path='/' component={() => (<Header app_data={app_data} />)} />
+		<Route path='/Calibration' component={() => (<CalibrationContainer />)} />
 	</Router>
 );
 
