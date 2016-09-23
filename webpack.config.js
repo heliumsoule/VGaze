@@ -1,14 +1,19 @@
-var path = require('path');
-var HTMLWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
 
-var HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
+const HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
 	template: path.join(__dirname, '/app/index.html'),
 	filename: 'index.html',
 	inject: 'body'
 });
+const CSSTextPluginConfig = new ExtractTextPlugin('styles.css');
 
 module.exports = {
-	entry: ['./app/index.js'],
+	entry: [
+		'./app/index.js',
+		'./app/styles/bootstrapAdd.css'
+	],
 	output: {
 		path: path.join(__dirname, '/build'),
 		filename: 'index.js'
@@ -27,10 +32,21 @@ module.exports = {
 				query: {
 					presets: ['es2015', 'react']
 				}
+			},
+			{
+				test: /\.css$/,
+				include: path.join(__dirname, '/app/styles'),
+				loader: ExtractTextPlugin.extract({
+					fallbackLoader: 'style-loader', 
+					loader: 'css-loader'
+				})
 			}
 		]
 	},
-	plugins: [HTMLWebpackPluginConfig],
+	plugins: [
+		HTMLWebpackPluginConfig,
+		CSSTextPluginConfig
+	],
 	watch: true
 
 }
