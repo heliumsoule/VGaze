@@ -2,17 +2,30 @@ import React from 'react';
 
 const Experiment = React.createClass({
 	componentWillMount() {
-		webgazer.setGazeListener((data, elapsedTime) => {
-			if (!data) return;
-			const xPrediction = data.x;
-			const yPrediction = data.y;
-			
-			this.props.handleFixation(xPrediction, yPrediction);
-		}).begin()
+		// const gazeListener = (data, elapsedTime) => {
+		// 	const xPos = data.x;
+		// 	const yPos = data.y;
+
+		// 	this.props.handleFixation(xPos, yPos);
+		// }
+
+		webgazer
+			.setRegression('ridge')
+			.setTracker('clmtrackr')
+			.setGazeListener((data, elapsedTime) => {
+				if (!data) return;
+
+				const xPos = data.x;
+				const yPos = data.y
+
+				this.props.handleFixation(xPos, yPos);
+			})
+			.begin()
+			.showPredictionPoints(true)
 	},
 	render() {
 		return (
-			<div style={{backgroundColor: 'red'}}>
+			<div>
 				The second page
 			</div>
 

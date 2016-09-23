@@ -17,7 +17,7 @@ const HomeContainer = React.createClass({
 		
 	},
 	handleFixation(xPos, yPos) {
-		console.log("From handleFixation", xPos, yPos);
+		this.refs.currFixation.animate(xPos, yPos);
 	},
 	render() {
 		return (

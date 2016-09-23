@@ -6,7 +6,7 @@ let styles = {
 		width: '100%',
 		height: '100%',
 		zIndex: '999',
-		backgroundColor: 'rgba(1, 1, 1, 0)',
+		backgroundColor: 'rgba(1, 1, 1, 0.2)',
 		pointerEvents: 'none',
 	},
 	headerStyle: {
