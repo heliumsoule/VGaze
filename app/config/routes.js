@@ -2,6 +2,7 @@ import React from 'react';
 import {Router, Route, IndexRoute, hashHistory} from 'react-router';
 import HomeContainer from '../container/HomeContainer';
 import Overview from '../components/Overview';
+import Experiment from '../components/Experiment';
 
 const exp_params = {
 	img_shown: 5,
@@ -25,6 +26,7 @@ const routes = (
 	<Router history={hashHistory}>
 		<Route path='/' component={HomeContainer}>
 			<IndexRoute component={() => (<Overview exp_params={exp_params} home_data={home_data} />)} />
+			<Route path='/Experiment' component={Experiment} />
 		</Route>
 	</Router>
 )

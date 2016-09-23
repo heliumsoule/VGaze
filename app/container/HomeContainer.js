@@ -16,14 +16,16 @@ const HomeContainer = React.createClass({
 	componentDidMount() {
 		
 	},
+	handleFixation(xPos, yPos) {
+		console.log("From handleFixation", xPos, yPos);
+	},
 	render() {
-		console.log(this.props.children);
 		return (
 			<div className="container">
 				<Header style={HeaderStyle} app_data={app_data}/>
-				<Fixation style={fixationStyle}>
-				</Fixation>
-				{this.props.children}
+				<Fixation style={fixationStyle} ref={'currFixation'}/>
+				{React.cloneElement(this.props.children, {handleFixation: this.handleFixation})}
+				
 			</div>
 		)
 	}

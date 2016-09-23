@@ -5,7 +5,7 @@ import {preStyle} from '../styles/styles';
 const Overview = props => (
 	<div className="row container display-table">
 		<div className="col-md-8 col-md-offset-2 display-cell">
-			<h2>VGaze is a webcam based eyetracking package</h2>
+			<h2>VGaze is a ReactJS based eyetracking package</h2>
 			<pre style={preStyle}>
 				{props.home_data.first_tutorial}
 				<kbd>{props.exp_params.select} Key</kbd>

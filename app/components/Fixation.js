@@ -1,14 +1,18 @@
 import React from 'react';
 const PropTypes = React.PropTypes;
 
-const Fixation = props => (
-	<div className='text-center' style={props.style}>
-		{props.children}
-	</div>
-)
+const Fixation = React.createClass({
+	PropTypes: {
+		style: PropTypes.object.isRequired
+	},
+	render() {
+		return (
+			<div style={this.props.style}>
+			</div>
+		)
+	}
 
-Fixation.PropTypes = {
-	style: PropTypes.object.isRequired
-}
+});
+
 
 module.exports = Fixation;
